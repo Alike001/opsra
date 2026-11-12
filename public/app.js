@@ -42,7 +42,11 @@
     get("trace-mode").textContent=mode==="prewritten-demo-no-serv-call"?"DEMO · NO SERV REQUEST":"REAL SERV COMPLETION";
     get("trace").textContent=JSON.stringify(trace,null,2);
     const host=get("citations");clear(host);
-    report.citations.forEach((cite)=>put(host,"span","ref",cite.id));
+    report.citations.forEach((cite)=>{
+      const anchor=put(host,"a","ref",cite.id);
+      anchor.href="#source-"+cite.id;
+      anchor.title="Open the original evidence observation";
+    });
   }
   async function load(id){
     current=id;drawQueue();notice("");
@@ -55,6 +59,7 @@
       const host=get("evidence");clear(host);
       for(const item of data.incident.evidence){
         const card=put(host,"article","evidencecard","");
+        card.id="source-"+item.id;
         const top=put(card,"div","evidencemeta","");
         put(top,"strong","",item.kind.toUpperCase());
         put(top,"span","",item.id+" · "+item.time);
@@ -95,6 +100,9 @@
   async function init(){
     get("run").addEventListener("click",run);
     get("run-probe").addEventListener("click",runProbe);
+    get("export-evidence").addEventListener("click",()=>{
+      window.location.href="/api/evidence-packet?id="+encodeURIComponent(current);
+    });
     try{
       const [health,list]=await Promise.all([api("/healthz"),api("/api/incidents")]);
       get("serv-ready").textContent=health.live_configured?"Ready · gated":"Not configured";
