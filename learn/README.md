@@ -4,14 +4,14 @@
 
 ## Why this exists
 
-Official documentation explains OpenServ and its APIs. ServSteps is an **interactive practice layer**: three short, sourced lessons, deterministic feedback on real exercises, a copyable first SERV request, and an optional SERV-powered tutor that explains the current lesson.
+Official documentation explains OpenServ and its APIs. ServSteps is an **interactive practice layer**: four short, sourced lessons, deterministic feedback on real exercises, a copyable first SERV request, and an optional SERV-powered tutor that explains the current lesson.
 
 Unlike a general AI chat interface, every lesson has a concrete outcome and links to the official source. Learners can finish the free path with no signup, API key or paid inference.
 
 ## How to test
 
 1. Open the live ServSteps preview once published. Select **I'm new**.
-2. Complete the "What is SERV?" exercise and observe why a wrong choice is wrong.
+2. Complete "Find your way around OpenServ" (Agents, Workflows, Connect), then "What is SERV?" and observe why a wrong choice is wrong.
 3. Complete "When reasoning helps" with an ambiguous decision scenario. No SERV inference is used for exact grading.
 4. Complete "Build your first request". Copy the JSON and curl command; nothing is executed on this screen.
 5. Verify local progress updates; navigate lessons and reload.
@@ -33,7 +33,7 @@ Visit http://localhost:3000.
 ## Server endpoints
 
 - \`GET /\`: learning interface
-- \`GET /api/lessons\`: three source-linked lessons, correct answers excluded
+- \`GET /api/lessons\`: four source-linked lessons, correct answers excluded
 - \`POST /api/check\`: deterministic assessment / validated API request preview
 - \`GET /healthz\`: health and tutor-enabled status
 - \`POST /api/mentor\`: access-gated live SERV Reasoning tutor, using source-specific grounding, strict response validation and per-process limits
