@@ -1,4 +1,4 @@
-# ServSteps — Continuation / Cross-Chat Handoff
+# TrySERV — Continuation / Cross-Chat Handoff
 Updated: 12 Nov 2026, Africa/Lagos. This is a durable project record, not a claim that ChatGPT memory has been manually edited.
 
 ## Goal
@@ -22,7 +22,7 @@ Server-side deterministic quiz grading, JSON/curl copy preview only, localStorag
 SERV tutor is NOT verified from hosted Render; no env secrets configured. No proper separate landing page and no XP points yet. Browser/mobile manual usability not yet independently verified. User wants better design and a true landing page.
 
 ## Plan agreement and repo
-Recommend new, clean public repo Alike001/servsteps, rather than renaming Opsra or deleting its unrelated incident history. Current GitHub connector can write commits and branches but cannot CREATE repos. User must create new repository via https://github.com/new?name=servsteps&visibility=public, then assistant can migrate the active learning code and point Render to it.
+Recommend new, clean public repo Alike001/tryserv, rather than renaming Opsra or deleting its unrelated incident history. Current GitHub connector can write commits and branches but cannot CREATE repos. User must create new repository via https://github.com/new?name=servsteps&visibility=public, then assistant can migrate the active learning code and point Render to it.
 Do not move before user confirms repo exists; avoid disrupting live old Opsra and preview.
 
 ## Critical credentials and steps
@@ -32,7 +32,7 @@ Put both in https://dashboard.render.com/web/srv-dbqukc0u01pc73857vl0 -> Environ
 Public judge-friendly tutor demo needs safety budget/rate limits, so don't expose key or hardcoded password.
 
 ## Product boundaries and next tasks
-1. Finalize plan and repo (new ServSteps repo; working name subject to clearance). Preserve old code.
+1. Finalize plan and repo (new TrySERV repo; working name subject to clearance). Preserve old code.
 2. Build actual landing and ecosystem exploration page, consistent lesson studio, reliable mobile.
 3. Add 20 XP once per completed lesson, max 80 XP, stored on-device only for MVP; resume, reset, completion.
 4. Configure SERV securely and test a REAL hosted inference; collect genuine completion ID/model/status/latency, prompt-injection and malformed output tests. No fake success.
@@ -40,4 +40,10 @@ Public judge-friendly tutor demo needs safety budget/rate limits, so don't expos
 6. Test full beginner and builder journeys, mobile, keyboard, README/demo/hackathon submission.
 
 ## Resume prompt for next ChatGPT conversation
-"Continue the ServSteps OpenServ learning companion. Read the canonical handoff at https://github.com/Alike001/opsra/blob/feat/serv-learning-companion/learn/CONTEXT-HANDOFF.md and product plan at learn/PRODUCT-PLAN.md. Verify current GitHub HEAD, CI and Render before taking action; do not touch old Opsra main. Focus on clean repo, landing page, XP/progress, and hosted SERV tutor verification."
+"Continue the TrySERV OpenServ learning companion. Read the canonical handoff at https://github.com/Alike001/opsra/blob/feat/serv-learning-companion/learn/CONTEXT-HANDOFF.md and product plan at learn/PRODUCT-PLAN.md. Verify current GitHub HEAD, CI and Render before taking action; do not touch old Opsra main. Focus on clean repo, landing page, XP/progress, and hosted SERV tutor verification."
+
+## Deploy incident and rename (12 Nov 2026)
+- Source of build failure: docs commit bb3bc13 used a new git tree without base_tree_sha, leaving only two docs and removing learn/server.mjs from that commit's snapshot. Not caused by SERV_API_KEY / LEARN_ACCESS_TOKEN.
+- Fixed safely in c0e61452cdbe520a1fddd6db097a729d9ecc6185 using base_tree_sha from passing revision 6e8ae24 with both docs overlaid. This restored files; Render deployment dep-dbqvi1nf3r2c73afi2ug reported LIVE; CI passed (12 tests). Old preview domain is unchanged.
+- Working name TrySERV; UI/docs rebrand after restored deployment; dedicated new repo Alike001/tryserv NOT created yet.
+- DO NOT create a Git tree for a partial overlay without base_tree_sha. Prefer GitHub update_file for one-file changes.

@@ -1,4 +1,4 @@
-# ServSteps MVP decision (12 Nov 2026)
+# TrySERV MVP decision (12 Nov 2026)
 
 ## One measurable outcome
 

@@ -1,16 +1,16 @@
-# ServSteps — learn OpenServ by doing
+# TrySERV — learn OpenServ by doing
 
 > **Working name; independent community project, not an official OpenServ site.**
 
 ## Why this exists
 
-Official documentation explains OpenServ and its APIs. ServSteps is an **interactive practice layer**: four short, sourced lessons, deterministic feedback on real exercises, a copyable first SERV request, and an optional SERV-powered tutor that explains the current lesson.
+Official documentation explains OpenServ and its APIs. TrySERV is an **interactive practice layer**: four short, sourced lessons, deterministic feedback on real exercises, a copyable first SERV request, and an optional SERV-powered tutor that explains the current lesson.
 
 Unlike a general AI chat interface, every lesson has a concrete outcome and links to the official source. Learners can finish the free path with no signup, API key or paid inference.
 
 ## How to test
 
-1. Open the live ServSteps preview once published. Select **I'm new**.
+1. Open the live TrySERV preview once published. Select **I'm new**.
 2. Complete "Find your way around OpenServ" (Agents, Workflows, Connect), then "What is SERV?" and observe why a wrong choice is wrong.
 3. Complete "When reasoning helps" with an ambiguous decision scenario. No SERV inference is used for exact grading.
 4. Complete "Build your first request". Copy the JSON and curl command; nothing is executed on this screen.

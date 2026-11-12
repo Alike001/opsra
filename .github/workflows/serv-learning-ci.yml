@@ -1,4 +1,4 @@
-name: ServSteps learning companion
+name: TrySERV learning companion
 on:
   push:
     branches:

@@ -1,12 +1,12 @@
-# ServSteps — Product Direction, Feature Plan and Release Gates
+# TrySERV — Product Direction, Feature Plan and Release Gates
 Updated: 12 Nov 2026 (Africa/Lagos). Planning checkpoint. No further feature development authorized by this document alone.
-Working name: ServSteps (not trademark cleared). Independent OpenServ learning companion.
+Working name: TrySERV (not trademark cleared). Independent OpenServ learning companion.
 
 ## Product promise
 Understand OpenServ by doing. From first-time confusion to a real, valid SERV request, supported by contextual SERV Reasoning tutoring and links to authoritative sources.
 
 ## Why it should exist
-OpenServ already has official docs, no-code builder, developer workshops, SDK, API playground and an MCP server. A docs chatbot or duplicate playground would be weak. ServSteps teaches with measurable outcomes: short guided concepts, actually graded challenges, an example API integration, error explanations, and on-device progress.
+OpenServ already has official docs, no-code builder, developer workshops, SDK, API playground and an MCP server. A docs chatbot or duplicate playground would be weak. TrySERV teaches with measurable outcomes: short guided concepts, actually graded challenges, an example API integration, error explanations, and on-device progress.
 
 ## Primary people
 1. Beginner: wants to know what OpenServ offers without jargon.
@@ -60,7 +60,7 @@ Login, leaderboards, crypto points, NFTs/certificates, multi-tenant course platf
 ## Repository and deployment strategy
 Current early preview: https://servsteps-preview.onrender.com
 Source is currently https://github.com/Alike001/opsra on feat/serv-learning-companion under learn/.
-Existing unrelated incident product is on Opsra main. **Do not delete it.** Recommend a clean public repository Alike001/servsteps (needs owner to create it in GitHub UI; current connector has no repository-create action), then migrate only the learning files onto its main branch. Reconnect Render service once the new branch tests pass. The name may be refined after checking availability.
+Existing unrelated incident product is on Opsra main. **Do not delete it.** Recommend a clean public repository Alike001/tryserv (needs owner to create it in GitHub UI; current connector has no repository-create action), then migrate only the learning files onto its main branch. Reconnect Render service once the new branch tests pass. The name may be refined after checking availability.
 No laptop Docker needed; GitHub Actions + Render carry build/test/deploy.
 
 ## Mandatory truthfulness and judging gates
@@ -68,3 +68,7 @@ Official Open Track requires SERV Reasoning materially included, public repo, de
 Claims of a real SERV call require actual hosted inference and completion metadata. Current copied request is just a preview. Revenue potential is an open hypothesis: onboarding as a service for SDK ecosystems and developer programs, not a proven business.
 https://www.openserv.ai/hackathon-2
 https://docs.openserv.ai/serv-reasoning/introduction
+
+## Name checkpoint and deployment repair
+- 12 Nov: Working name changed from ServSteps to TrySERV (shorter, learning by trying). The current preview URL may retain the old Render slug until clean repo migration.
+- Deployment repair: commit c0e6145 restored the original application file tree after a previous docs-only commit unintentionally replaced the tree. Render subsequently built successfully, tests passed and reported live. Not caused by the user's environment variables.
