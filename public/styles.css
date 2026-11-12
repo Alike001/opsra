@@ -2,3 +2,10 @@
 
 .evidence-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.probe-button{padding:8px 11px;background:#153a47;border:1px solid #2b6970;border-radius:7px;color:#8af2d5;font-size:11px;font-weight:750}.probe-button:disabled{opacity:.45;cursor:wait}.probe-button:hover:not(:disabled){background:#205262}
 @media(max-width:680px){.evidence-actions{align-items:start;flex-direction:column}.probe-button{width:100%}}
+
+/* Functional navigation and inspectable cited evidence */
+a.nav{text-decoration:none}a.nav:hover,a.nav:focus-visible{background:#1b3d4e;outline:1px solid #416a7d}
+.evidencecard:target{outline:2px solid var(--mint);outline-offset:3px;background:#1b3842}
+.ref{text-decoration:none}.ref:hover,.ref:focus-visible{outline:1px solid var(--mint);text-decoration:underline}
+.exportline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}.exportline small{color:var(--muted)}
+[id]{scroll-margin-top:22px}
