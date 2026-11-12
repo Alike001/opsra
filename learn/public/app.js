@@ -176,7 +176,7 @@
    host.className="mentor-response"+(failed?" error":"");
  }
  async function init(){
-   $("start-fresh").addEventListener("click",()=>openLesson("understand"));
+   $("start-fresh").addEventListener("click",()=>openLesson("ecosystem"));
    $("jump-build").addEventListener("click",()=>openLesson("build"));
    $("check").addEventListener("click",check);
    $("next").addEventListener("click",next);
