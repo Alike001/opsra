@@ -6,11 +6,12 @@ import {createApp} from "../server.mjs";
 
 const lessons=publicLessons();
 test("three progressive lessons grounded in official documentation",()=>{
- assert.deepEqual(lessons.map(l=>l.id),["understand","decide","build"]);
+ assert.deepEqual(lessons.map(l=>l.id),["ecosystem","understand","decide","build"]);
  assert.ok(lessons.every(l=>l.source.url.startsWith("https://docs.openserv.ai/")));
  assert.ok(lessons.every(l=>!Object.hasOwn(l,"answer")&&!Object.hasOwn(l,"explanation")));
 });
 test("exact learning assessment accepts the grounded choice, refuses invented answer",()=>{
+ assert.equal(checkExercise("ecosystem","flow").passed,true);
  assert.equal(checkExercise("understand","endpoint").passed,true);
  assert.equal(checkExercise("decide","decision").passed,true);
  assert.equal(checkExercise("decide","sum").passed,false);
@@ -74,7 +75,7 @@ test("unauthenticated lessons work; endpoint hides answer key and SERV secrets",
    assert.equal(r.status,200);
    assert.ok(!content.includes('"answer":"endpoint"'));
    assert.ok(!content.includes("SERV_API_KEY"));
-   assert.equal(JSON.parse(content).lessons.length,3);
+   assert.equal(JSON.parse(content).lessons.length,4);
  });
 });
 test("server grades a real HTTP lesson submission",async()=>{
