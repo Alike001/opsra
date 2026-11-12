@@ -2,7 +2,23 @@
 // The companion is independently built and is not affiliated with OpenServ.
 const modules=[
   {
-    id:"understand",number:"01",category:"Understand",minutes:3,
+    id:"ecosystem",number:"01",category:"Explore",minutes:4,
+    title:"Find your way around OpenServ",
+    summary:"Discover where agents, workflows, connections and SERV fit together.",
+    takeaway:"OpenServ provides infrastructure for building and running AI-powered applications, not just a single chatbot or model.",
+    detail:"Agents encapsulate AI capabilities. Workflows coordinate steps across agents. Connect links integrations, MCPs and secrets. Developers can use the TypeScript SDK, while SERV Reasoning can support harder model decisions. You do not need all components for every project.",
+    challenge:"You want to organize several existing AI agents into a multi-step process without writing code. Where would you begin?",
+    choices:[
+      {id:"flow",text:"Explore OpenServ Workflows and Agents"},
+      {id:"reason",text:"Only change the SERV Reasoning API base URL"},
+      {id:"token",text:"Start by launching a token before testing the idea"}
+    ],
+    answer:"flow",
+    explanation:"OpenServ's Workflows and Agents are designed for composing multi-step agent processes, including no-code setups. SERV Reasoning serves a different role: improving model decisions.",
+    source:{title:"What is OpenServ? · Official docs",url:"https://docs.openserv.ai/no-code/what-is-openserv"}
+  },
+  {
+    id:"understand",number:"02",category:"Understand",minutes:3,
     title:"What is SERV, really?",
     summary:"Understand where SERV fits before writing code.",
     takeaway:"SERV Reasoning is a reasoning layer for existing models. It is not a replacement for your entire app or a blockchain transaction engine.",
@@ -18,7 +34,7 @@ const modules=[
     source:{title:"SERV Reasoning quickstart",url:"https://docs.openserv.ai/serv-reasoning/introduction"}
   },
   {
-    id:"decide",number:"02",category:"Practice",minutes:4,
+    id:"decide",number:"03",category:"Practice",minutes:4,
     title:"Know when reasoning helps",
     summary:"Pick the tasks where SERV earns its place.",
     takeaway:"Use SERV for ambiguous decisions and competing constraints. Use ordinary code for deterministic arithmetic and lookups.",
@@ -34,7 +50,7 @@ const modules=[
     source:{title:"Day One with SERV",url:"https://docs.openserv.ai/serv-reasoning/day-one"}
   },
   {
-    id:"build",number:"03",category:"Build",minutes:5,
+    id:"build",number:"04",category:"Build",minutes:5,
     title:"Build your first valid request",
     summary:"Create a real API request shape you can use in your own project.",
     takeaway:"For Chat Completions, you need an authorized request, supported model, and system/developer instruction. Keep your key on the server.",
