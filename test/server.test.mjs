@@ -47,7 +47,7 @@ test("public file handler never exposes server code",async()=>{
   await withApp({},async(url)=>{
     const r=await fetch(url+"/");
     assert.equal(r.status,200);
-    assert.match(await r.text(),/SERV Incident Lab/);
+    assert.match(await r.text(),/Opsra/);
     const denied=await fetch(url+"/lib/serv.mjs");
     assert.equal(denied.status,404);
   });
