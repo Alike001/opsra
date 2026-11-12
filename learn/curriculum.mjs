@@ -61,7 +61,7 @@ export function checkExercise(id,answer){
    const payload={model,messages:[{role:"system",content:answer.system.trim()},{role:"user",content:answer.user.trim()}]};
    return {passed:true,feedback:"Valid request shape. The system instruction, user task and supported model are present. This is a preview, not an API call.",source:lesson.source,
       request:payload,method:"POST",endpoint:"https://inference-api.openserv.ai/v1/chat/completions",
-      curl:"curl https://inference-api.openserv.ai/v1/chat/completions -H 'Authorization: Bearer \"$SERV_API_KEY\"' -H 'Content-Type: application/json' --data-binary @request.json"};
+      curl:"curl https://inference-api.openserv.ai/v1/chat/completions -H \"Authorization: Bearer $SERV_API_KEY\" -H 'Content-Type: application/json' --data-binary @request.json"};
  }
  if(typeof answer!=="string"||answer.length>100)throw new Error("Choose one of the provided answers.");
  const valid=lesson.choices.some(c=>c.id===answer);
