@@ -2,7 +2,7 @@
 
 ## One measurable outcome
 
-A person with no previous OpenServ experience should complete three lessons, understand when SERV is appropriate, and generate a syntactically valid request without sharing any API key.
+A person with no previous OpenServ experience should complete four lessons, understand when SERV is appropriate, and generate a syntactically valid request without sharing any API key.
 
 ## Audience
 
@@ -15,7 +15,7 @@ The free material is a tiny, grounded course with server-checked progress challe
 
 ## Success criteria
 
-- All three lessons usable without signup and without paid API calls.
+- All four lessons usable without signup and without paid API calls.
 - A wrong choice gets accurate grounded feedback; exercise answers cannot be accidentally guessed by front-end source.
 - Builder checks required model/system/user and yields a real Chat Completions request body.
 - The tutor actually calls SERV when enabled, with model/ID/provenance shown; fail closed if unavailable.
