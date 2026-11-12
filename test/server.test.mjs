@@ -74,3 +74,39 @@ test("public cannot make network requests to arbitrary external probe URLs",asyn
     assert.equal(response.status,404);
   });
 });
+
+test("exportable evidence packet contains sources, not fictitious live AI results",async()=>{
+  await withApp({},async(url)=>{
+    const r=await fetch(url+"/api/evidence-packet?id=LAB-502-001");
+    assert.equal(r.status,200);
+    assert.match(r.headers.get("content-disposition"),/attachment/);
+    const packet=await r.json();
+    assert.equal(packet.schema,"opsra.evidence-packet.v1");
+    assert.equal(packet.data_classification,"controlled-lab");
+    assert.equal(packet.ai_report_included,false);
+    assert.equal(packet.recovery_status,"not_verified");
+    assert.ok(packet.evidence.every((e)=>e.source.includes("Synthetic")));
+    assert.ok(packet.evidence.length>=3);
+  });
+});
+
+test("downloaded packet includes observed HTTP evidence only after an actual controlled probe",async()=>{
+  await withApp({},async(url)=>{
+    const probe=await fetch(url+"/api/probe?id=LAB-DB-002");
+    assert.equal(probe.status,200);
+    const packet=await (await fetch(url+"/api/evidence-packet?id=LAB-DB-002")).json();
+    assert.equal(packet.controlled_http_probe_recorded,true);
+    const observation=packet.evidence.find((e)=>e.id==="ev-actual-http-probe");
+    assert.ok(observation);
+    assert.equal(observation.details.status,503);
+    assert.equal(observation.actual_http_request,true);
+    assert.equal(observation.production_monitoring,false);
+  });
+});
+
+test("evidence packet cannot export any path or unrecognized incident",async()=>{
+  await withApp({},async(url)=>{
+    const r=await fetch(url+"/api/evidence-packet?id=../../etc/passwd");
+    assert.equal(r.status,404);
+  });
+});
