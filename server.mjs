@@ -97,6 +97,34 @@ export function createApp({env=process.env,fetchImpl=fetch}={}) {
         trace:{source:"synthetic fixture",serv_called:false,real_infrastructure_access:false,
           controlled_http_probe_recorded:Boolean(probeHistory.get(id))}});
     }
+    // Safe, downloadable evidence packet; does NOT claim a live SERV report.
+    if(req.method==="GET"&&pathname==="/api/evidence-packet") {
+      const id=new URL(req.url,"http://localhost").searchParams.get("id")??INCIDENTS[0].id;
+      const incident=withProbeEvidence(getIncident(id));
+      if(!incident)return send(res,404,{error:"Unknown lab incident."});
+      const packet={
+        schema:"opsra.evidence-packet.v1",
+        exported_at:new Date().toISOString(),
+        data_classification:"controlled-lab",
+        incident:{id:incident.id,title:incident.title,service:incident.service,description:incident.description},
+        evidence:incident.evidence,
+        observation_count:incident.evidence.length,
+        controlled_http_probe_recorded:Boolean(probeHistory.get(id)),
+        ai_report_included:false,
+        recovery_status:"not_verified",
+        limitations:[
+          "Synthetic lab fixtures are not production monitoring.",
+          "Any HTTP observation is from an intentionally failing local lab endpoint.",
+          "No SERV result or independently verified recovery is included."
+        ]
+      };
+      res.writeHead(200,{
+        "Content-Type":"application/json; charset=utf-8",
+        "Content-Disposition":'attachment; filename="opsra-'+id.toLowerCase()+'-evidence.json"',
+        "Cache-Control":"no-store"
+      });
+      return res.end(JSON.stringify(packet,null,2));
+    }
     if(req.method==="POST"&&pathname==="/api/investigate") {
       if(!liveConfigured)
         return send(res,503,{error:"Live SERV calls are disabled until server-side secrets are configured."});
