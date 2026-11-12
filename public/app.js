@@ -106,6 +106,13 @@
     try{
       const [health,list]=await Promise.all([api("/healthz"),api("/api/incidents")]);
       get("serv-ready").textContent=health.live_configured?"Ready · gated":"Not configured";
+      get("run").disabled=!health.live_configured;
+      get("staging-token").disabled=!health.live_configured;
+      if(!health.live_configured) {
+        get("run").textContent="Live SERV not enabled";
+        get("run").title="Server-side SERV credentials must be configured on Render.";
+        get("staging-token").placeholder="Configure SERV on the server first";
+      }
       items=list.incidents;
       await load(current);
     }catch(error){notice("Could not initialize: "+error.message,true);}
