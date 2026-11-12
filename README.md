@@ -8,14 +8,16 @@
 
 ## How to test — first
 
-1. Open the public Opsra deployment (linked here after deployment).
+1. Open the public staging deployment at https://opsra-staging.onrender.com.
 2. Select either lab incident. Inspect source labels and citations.
 3. Click **Run lab HTTP probe** to observe a real but deliberately induced HTTP 502/503 from the controlled lab server.
 4. Check that the new evidence includes an HTTP status, timestamp and duration, and **does not claim production monitoring**.
-5. The default report is a **prewritten fixture**, not a SERV call.
-6. To test actual SERV Reasoning, the operator must configure server-side `SERV_API_KEY` and a separate `STAGING_ACCESS_TOKEN`. Enter **only the access token** in the browser; click **Run SERV investigation**.
-7. Examine returned SERV completion IDs, selected `gateway_call`, trace and report citations. If an API call fails, the application displays an error rather than a fake result.
-8. Recovery remains **not verified**, regardless of a model's conclusion.
+5. Click a report citation to jump to its corresponding source observation.
+6. Click **Download evidence packet** to receive a JSON file containing the labeled lab observations, without a fabricated live SERV report.
+7. The default report is a **prewritten fixture**, not a SERV call.
+8. To test actual SERV Reasoning, the operator must configure server-side `SERV_API_KEY` and a separate `STAGING_ACCESS_TOKEN`. Enter **only the access token** in the browser; click **Run SERV investigation**.
+9. Examine returned SERV completion IDs, selected `gateway_call`, trace and report citations. If an API call fails, the application displays an error rather than a fake result.
+10. Recovery remains **not verified**, regardless of a model's conclusion.
 
 No tester needs a wallet, test funds, or access to production infrastructure. The live SERV button is deliberately unavailable until secure server credentials are configured.
 
@@ -48,6 +50,7 @@ The controlled probe can only call fixed paths on `127.0.0.1` within the running
 
 - [x] Original standalone incident dashboard, lab evidence and deterministic evidence checks
 - [x] Safe, read-only real HTTP probe for known controlled lab failures
+- [x] Downloadable evidence packet and clickable source citations
 - [x] Backend SERV API integration code and mocked protocol tests
 - [ ] Live SERV call **from the hosted app** with operator-provided server secret
 - [ ] Actual Akmatori Gateway integration and separately authenticated Grafana read-only queries
